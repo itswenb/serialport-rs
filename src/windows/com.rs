@@ -270,10 +270,12 @@ impl SerialPort for COMPort {
         let mut timeouts = COMMTIMEOUTS {
             ReadIntervalTimeout: MAXDWORD,
             ReadTotalTimeoutMultiplier: 0,
-            ReadTotalTimeoutConstant: timeout_constant,
+            ReadTotalTimeoutConstant: 1,
             WriteTotalTimeoutMultiplier: 0,
-            WriteTotalTimeoutConstant: timeout_constant,
+            WriteTotalTimeoutConstant: 1,
         };
+
+        println!("Setting COM port timeout to {:?} ms", timeout_constant);
 
         if unsafe { SetCommTimeouts(self.handle, &mut timeouts) } == 0 {
             return Err(super::error::last_os_error());
