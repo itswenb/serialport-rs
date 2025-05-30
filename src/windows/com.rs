@@ -269,7 +269,7 @@ impl SerialPort for COMPort {
 
         let mut timeouts = COMMTIMEOUTS {
             ReadIntervalTimeout: MAXDWORD,
-            ReadTotalTimeoutMultiplier: MAXDWORD,
+            ReadTotalTimeoutMultiplier: 0,
             ReadTotalTimeoutConstant: timeout_constant,
             WriteTotalTimeoutMultiplier: 0,
             WriteTotalTimeoutConstant: timeout_constant,
