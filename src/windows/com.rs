@@ -275,7 +275,7 @@ impl SerialPort for COMPort {
             WriteTotalTimeoutConstant: 1,
         };
 
-        println!("Setting COM port timeout to {:?} ms", timeout_constant);
+        println!("Setting COM port timeout to {:?q} ms", timeout_constant);
 
         if unsafe { SetCommTimeouts(self.handle, &mut timeouts) } == 0 {
             return Err(super::error::last_os_error());
