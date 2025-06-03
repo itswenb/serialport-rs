@@ -9,9 +9,7 @@ use winapi::um::fileapi::*;
 use winapi::um::handleapi::*;
 use winapi::um::processthreadsapi::GetCurrentProcess;
 use winapi::um::winbase::*;
-use winapi::um::winnt::{
-    DUPLICATE_SAME_ACCESS, FILE_FLAG_OVERLAPPED, GENERIC_READ, GENERIC_WRITE, HANDLE, MAXDWORD,
-};
+use winapi::um::winnt::{DUPLICATE_SAME_ACCESS, GENERIC_READ, GENERIC_WRITE, HANDLE, MAXDWORD};
 
 use crate::windows::dcb;
 use crate::{
