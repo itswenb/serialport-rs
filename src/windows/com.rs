@@ -10,7 +10,7 @@ use winapi::um::handleapi::*;
 use winapi::um::processthreadsapi::GetCurrentProcess;
 use winapi::um::winbase::*;
 use winapi::um::winnt::{
-    DUPLICATE_SAME_ACCESS, FILE_ATTRIBUTE_NORMAL, GENERIC_READ, GENERIC_WRITE, HANDLE, MAXDWORD,
+    DUPLICATE_SAME_ACCESS, FILE_FLAG_OVERLAPPED, GENERIC_READ, GENERIC_WRITE, HANDLE, MAXDWORD,
 };
 
 use crate::windows::dcb;
@@ -63,7 +63,7 @@ impl COMPort {
                 0,
                 ptr::null_mut(),
                 OPEN_EXISTING,
-                FILE_ATTRIBUTE_NORMAL,
+                FILE_FLAG_OVERLAPPED,
                 0 as HANDLE,
             )
         };
