@@ -268,14 +268,14 @@ impl SerialPort for COMPort {
         let timeout_constant = Self::timeout_constant(timeout);
 
         let mut timeouts = COMMTIMEOUTS {
-            ReadIntervalTimeout: MAXDWORD,
+            ReadIntervalTimeout: 1,
             ReadTotalTimeoutMultiplier: 0,
-            ReadTotalTimeoutConstant: 1,
+            ReadTotalTimeoutConstant: 0,
             WriteTotalTimeoutMultiplier: 0,
             WriteTotalTimeoutConstant: 1,
         };
 
-        println!("Setting COM port timeout to {:?q} ms", timeout_constant);
+        println!("Setting COM port timeout to {:?} ms", timeout_constant);
 
         if unsafe { SetCommTimeouts(self.handle, &mut timeouts) } == 0 {
             return Err(super::error::last_os_error());
